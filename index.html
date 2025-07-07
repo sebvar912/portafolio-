@@ -6,18 +6,8 @@
   <title>Sebastián Vargas - Web Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    
- 
-  .skill-circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #764ba2;
-    margin: 10px auto 0;
-  }
-
-
     body {
       font-family: 'Poppins', sans-serif;
       background: #f4f4f9;
@@ -52,51 +42,67 @@
       padding: 20px 0;
       text-align: center;
     }
+    .skill-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #764ba2;
+      margin: 10px auto 0;
+    }
+    .btn-cv {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-  
-  <section class="hero">
+  <section class="hero" data-aos="fade-down">
     <div class="container">
       <h1>Hi! My name is Sebastián</h1>
       <p class="lead mt-3">I'm a passionate web designer and systems engineering student with strong skills in front-end development and graphic design. I love creating visually appealing and user-friendly websites while learning and growing every day.</p>
+     
     </div>
   </section>
 
-  
-  <section class="py-5">
+  <section class="py-5" data-aos="fade-up">
     <div class="container">
       <h2 class="section-title">About Me</h2>
       <p class="text-center">Currently studying Systems Engineering and certified in web development, graphic design, and programming fundamentals. I'm fluent in English (B1) and constantly improving my skills through platforms like Platzi. I enjoy working in teams, adapting quickly, and contributing with creativity and technical knowledge.</p>
     </div>
   </section>
 
-  <section class="py-5 bg-light">
-  <div class="container">
-    <h2 class="section-title">Skills</h2>
-    <div class="row text-center">
-      <div class="col-md-3 mb-4">
-        <h5>HTML / CSS / JS</h5>
-        <div class="skill-circle"></div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <h5>UI/UX & Figma</h5>
-        <div class="skill-circle"></div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <h5>React (Basic)</h5>
-        <div class="skill-circle"></div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <h5>Adobe / Design Tools</h5>
-        <div class="skill-circle"></div>
+  <section class="py-5 bg-light" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <h5><strong>HTML5 / CSS3 / JavaScript</strong></h5>
+          <div class="skill-circle"></div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5><strong>Bootstrap & Responsive Design</strong></h5>
+          <div class="skill-circle"></div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5><strong>Git & GitHub</strong></h5>
+          <div class="skill-circle"></div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>UI/UX Design with Figma</h5>
+          <div class="skill-circle"></div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Adobe Creative Suite</h5>
+          <div class="skill-circle"></div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>React (Basic)</h5>
+          <div class="skill-circle"></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  
-  <section class="py-5">
+  <section class="py-5" data-aos="fade-up">
     <div class="container">
       <h2 class="section-title">Experience</h2>
       <div class="card p-4 shadow-sm mb-4">
@@ -106,8 +112,7 @@
     </div>
   </section>
 
- 
-  <section class="py-5 bg-light">
+  <section class="py-5 bg-light" data-aos="fade-up">
     <div class="container">
       <h2 class="section-title">Education & Training</h2>
       <ul>
@@ -119,8 +124,7 @@
     </div>
   </section>
 
- 
-  <section class="py-5">
+  <section class="py-5" data-aos="fade-up">
     <div class="container">
       <h2 class="section-title">Contact</h2>
       <p class="text-center">Email: sebastianvargastole@gmail.com | Phone: +57 321 404 1791</p>
@@ -131,5 +135,9 @@
     <p>&copy; 2025 Sebastián Vargas. All rights reserved.</p>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
