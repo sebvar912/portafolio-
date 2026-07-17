@@ -3,175 +3,464 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sebastián Vargas - Web Portfolio</title>
+  <title>Sebastián Vargas | Front-End Developer & UI/UX Designer</title>
+  
+  <!-- Fonts & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Space+Grotesk:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
   <style>
+    /* EXTREME CMYK & RGB Color Variables */
+    :root {
+      --bg-dark: #050505;
+      --card-bg: rgba(15, 15, 20, 0.85);
+      --cyan: #00f3ff;
+      --magenta: #ff00ff;
+      --yellow: #ffe600;
+      --text-light: #f4f4f9;
+      --text-muted: #a0a0b0;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f4f4f9;
-      color: #333;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      /* Animated Cyber Grid Background */
+      background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: center center;
+      animation: gridMove 20s linear infinite;
     }
-    .hero {
-      background: linear-gradient(to right, #667eea, #764ba2);
-      color: white;
-      padding: 100px 0;
-      text-align: center;
+
+    @keyframes gridMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(40px); }
     }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 600;
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
     }
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      font-weight: 600;
-      text-align: center;
+
+    /* Animated Gradient Text */
+    .gradient-text {
+      background: linear-gradient(270deg, var(--cyan), var(--magenta), var(--yellow), var(--cyan));
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 5s ease infinite;
+      display: inline-block;
     }
-    .card {
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Animated Color Line */
+    .color-line {
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(270deg, var(--cyan), var(--magenta), var(--yellow), var(--cyan));
+      background-size: 400% 400%;
       border: none;
-      transition: transform 0.3s ease;
+      margin: 0;
+      animation: gradientFlow 3s ease infinite;
+      box-shadow: 0 0 20px var(--magenta);
     }
-    .card:hover {
-      transform: scale(1.05);
+
+    /* Section Titles with Brackets */
+    .section-title {
+      font-size: 3rem;
+      margin-bottom: 50px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-shadow: 2px 2px 0px rgba(255,0,255,0.5);
     }
-    footer {
-      background: #333;
+    .section-title::before { content: "[ "; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+    .section-title::after { content: " ]"; color: var(--yellow); text-shadow: 0 0 10px var(--yellow); }
+    .section-title span { color: var(--text-light); font-size: 1.5rem; vertical-align: top; }
+
+    /* GLITCH EFFECT */
+    .glitch-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    .glitch {
+      font-size: 5rem;
+      font-weight: 900;
+      position: relative;
       color: white;
-      padding: 20px 0;
-      text-align: center;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.8);
     }
-    .skill-icon {
-      font-size: 2rem;
-      color: #764ba2;
-      margin-bottom: 10px;
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--bg-dark);
     }
+    .glitch::before {
+      left: 3px;
+      text-shadow: -2px 0 var(--magenta);
+      animation: glitch-anim-1 2s infinite linear alternate-reverse;
+    }
+    .glitch::after {
+      left: -3px;
+      text-shadow: -2px 0 var(--cyan);
+      animation: glitch-anim-2 3s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-anim-1 {
+      0% { clip-path: inset(20% 0 80% 0); }
+      20% { clip-path: inset(60% 0 10% 0); }
+      40% { clip-path: inset(40% 0 50% 0); }
+      60% { clip-path: inset(80% 0 5% 0); }
+      80% { clip-path: inset(10% 0 70% 0); }
+      100% { clip-path: inset(30% 0 20% 0); }
+    }
+    @keyframes glitch-anim-2 {
+      0% { clip-path: inset(10% 0 60% 0); }
+      20% { clip-path: inset(30% 0 20% 0); }
+      40% { clip-path: inset(70% 0 10% 0); }
+      60% { clip-path: inset(20% 0 50% 0); }
+      80% { clip-path: inset(50% 0 30% 0); }
+      100% { clip-path: inset(5% 0 80% 0); }
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: radial-gradient(circle at 50% 50%, rgba(26,26,46,0.8) 0%, var(--bg-dark) 100%);
+      z-index: 1;
+    }
+
+    /* Extreme 3D Glass Cards */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px 30px;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-20px) scale(1.05);
+      border-color: var(--cyan);
+      box-shadow: 0 20px 40px rgba(0, 243, 255, 0.3), 
+                  0 0 20px rgba(255, 0, 255, 0.3) inset;
+    }
+
+    /* Floating Icons */
+    .service-icon, .skill-icon {
+      font-size: 3.5rem;
+      color: var(--cyan);
+      margin-bottom: 25px;
+      display: inline-block;
+      text-shadow: 0 0 20px var(--cyan);
+      transition: transform 0.3s;
+    }
+    .glass-card:hover .service-icon, .glass-card:hover .skill-icon {
+      transform: scale(1.2) rotate(10deg);
+      color: var(--yellow);
+      text-shadow: 0 0 30px var(--yellow);
+    }
+
+    /* Neon Progress Bars */
     .progress {
       height: 8px;
-      margin-top: 10px;
-    }
-    .btn-cv {
+      background-color: #111;
+      border-radius: 20px;
       margin-top: 20px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,1);
+    }
+    .progress-bar {
+      background: linear-gradient(90deg, var(--cyan), var(--magenta));
+      border-radius: 20px;
+      box-shadow: 0 0 15px var(--magenta);
+      position: relative;
+    }
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+      animation: shine 2s infinite;
+    }
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Cyberpunk Button */
+    .btn-cyber {
+      background: transparent;
+      color: var(--cyan);
+      border: 2px solid var(--cyan);
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-cyber:hover {
+      background: var(--cyan);
+      color: var(--bg-dark);
+      box-shadow: 0 0 40px var(--cyan);
+    }
+
+    /* Edu List */
+    .edu-list li {
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.03);
+      margin-bottom: 15px;
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 10px 10px 0;
+      transition: 0.3s;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .edu-list li:hover {
+      background: rgba(255,255,255,0.1);
+      border-left-color: var(--magenta);
+      transform: translateX(10px);
+      box-shadow: 5px 0 15px rgba(255,0,255,0.2);
+    }
+
+    footer {
+      background: #000;
+      padding: 40px 0;
+      border-top: 2px solid var(--magenta);
+      box-shadow: 0 -10px 30px rgba(255,0,255,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .glitch { font-size: 3rem; }
+      .section-title { font-size: 2rem; }
+      .btn-cyber { font-size: 0.9rem; padding: 10px 20px; } /* Ajuste móvil para que el correo encaje bien */
     }
   </style>
 </head>
 <body>
-  <section class="hero" data-aos="fade-down">
+
+  <hr class="color-line">
+
+  <!-- Hero Section -->
+  <section class="hero text-center" data-aos="zoom-out" data-aos-duration="1500">
     <div class="container">
-      <h1>Hi! My name is Sebastián</h1>
-      <p class="lead mt-3">I'm a passionate web designer and systems engineering student with strong skills in front-end development and graphic design. I love creating visually appealing and user-friendly websites while learning and growing every day.</p>
+      <p class="fs-4 text-uppercase mb-3" style="color: var(--yellow); letter-spacing: 5px; font-weight: 800;">System Online</p>
+      <div class="glitch-wrapper mb-4">
+        <h1 class="glitch" data-text="SEBASTIÁN VARGAS">SEBASTIÁN VARGAS</h1>
+      </div>
+      <p class="lead w-75 mx-auto text-light mt-3 fs-4" style="text-shadow: 0 0 10px rgba(255,255,255,0.3);">
+        <span class="gradient-text fw-bold">Front-End Architect & UI/UX Designer</span><br>
+        Engineering digital experiences where vibrant design meets flawless logic.
+      </p>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="container mt-5">
+      <h2 class="section-title text-center"><span></span> CORE_FILES</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="glass-card">
+            <div class="row align-items-center">
+              <div class="col-md-7 mb-4 mb-md-0">
+                <h3 class="fw-bold mb-4" style="color: var(--cyan); text-shadow: 0 0 10px var(--cyan);">[ Designer x Engineer ]</h3>
+                <p class="fs-5" style="color: var(--text-light); line-height: 1.8;">
+                  Advancing my Systems Engineering degree at the <strong>Universidad Tecnológica de Pereira</strong>. My academic background gives me a lethal foundation in logic and algorithms, while my certifications in UI/UX translate complex code into intuitive, striking interfaces. 
+                </p>
+                <p class="fs-5" style="color: var(--text-light); line-height: 1.8;">
+                  B1 English proficiency. Fast adapter. I don't just write code; I engineer digital masterpieces.
+                </p>
+              </div>
+              <div class="col-md-5 border-start border-secondary ps-md-4">
+                <h3 class="fw-bold mb-4" style="color: var(--magenta); text-shadow: 0 0 10px var(--magenta);">[ AFK_MODE ]</h3>
+                <p class="fs-6" style="color: var(--text-muted); line-height: 1.6;">
+                  Creativity demands discipline. Off-screen, you’ll find me focused on hypertrophy training at the gym, grinding ranks in League of Legends, strategizing in Pokémon, or blasting GFRIEND to keep the hyper-focus intact.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I Can Do -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="container my-5">
+      <h2 class="section-title text-center"><span></span> CAPABILITIES</h2>
       
-    </div>
-  </section>
-
-  <section class="py-5" data-aos="fade-up">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p class="text-center">Currently studying Systems Engineering and certified in web development, graphic design, and programming fundamentals. I'm fluent in English (B1) and constantly improving my skills through platforms like Platzi. I enjoy working in teams, adapting quickly, and contributing with creativity and technical knowledge.</p>
-    </div>
-  </section>
-
-  <section class="py-5 bg-light" data-aos="fade-up">
-    <div class="container">
-      <h2 class="section-title">Skills</h2>
-      <div class="row text-center">
-        <div class="col-md-4 mb-4">
-          <i class="bi bi-code-slash skill-icon"></i>
-          <h5><strong>HTML5 / CSS3 / JavaScript</strong></h5>
-          <div class="progress">
-            <div class="progress-bar bg-primary" style="width: 90%"></div>
+      <div class="row g-4 mt-4">
+        <div class="col-md-4">
+          <div class="glass-card text-center">
+            <i class="bi bi-vector-pen service-icon" style="color: var(--magenta);"></i>
+            <h4 class="fw-bold text-white">UI/UX Protocol</h4>
+            <p class="text-muted mt-3">High-fidelity prototyping and user-centric interfaces. Usability meets neon-drenched aesthetics using Figma.</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <i class="bi bi-layout-text-window skill-icon"></i>
-          <h5><strong>Bootstrap & Responsive Design</strong></h5>
-          <div class="progress">
-            <div class="progress-bar bg-primary" style="width: 85%"></div>
+        <div class="col-md-4">
+          <div class="glass-card text-center">
+            <i class="bi bi-lightning-charge-fill service-icon" style="color: var(--cyan);"></i>
+            <h4 class="fw-bold text-white">Front-End Logic</h4>
+            <p class="text-muted mt-3">Translating designs into responsive, pixel-perfect architecture. Clean code, smooth animations, zero lag.</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <i class="bi bi-git skill-icon"></i>
-          <h5><strong>Git & GitHub</strong></h5>
-          <div class="progress">
-            <div class="progress-bar bg-primary" style="width: 80%"></div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <i class="bi bi-vector-pen skill-icon"></i>
-          <h5>UI/UX Design with Figma</h5>
-          <div class="progress">
-            <div class="progress-bar bg-primary" style="width: 85%"></div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <i class="bi bi-brush skill-icon"></i>
-          <h5>Adobe Creative Suite</h5>
-          <div class="progress">
-            <div class="progress-bar bg-primary" style="width: 80%"></div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <i class="bi bi-lightning skill-icon"></i>
-          <h5>React (Basic)</h5>
-          <div class="progress">
-            <div class="progress-bar bg-primary" style="width: 60%"></div>
+        <div class="col-md-4">
+          <div class="glass-card text-center">
+            <i class="bi bi-droplet-half service-icon" style="color: var(--yellow);"></i>
+            <h4 class="fw-bold text-white">Visual Identity</h4>
+            <p class="text-muted mt-3">Mastery over CMYK (print) and RGB (digital) spectrums. Crafting brands that burn into the retina.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-5" data-aos="fade-up">
-    <div class="container">
-      <h2 class="section-title">Experience</h2>
-      <div class="card p-4 shadow-sm mb-4">
-        <h5>Logistics Assistant - Indumentalicas SALGADO & SALGADO (2023)</h5>
-        <p>Supported coordination of shipments, managed inventories and handled administrative tasks. Developed organizational and teamwork abilities.</p>
+  <!-- Tech Stack Section -->
+  <section class="py-5" data-aos="fade-right">
+    <div class="container my-5">
+      <h2 class="section-title text-center"><span></span> TECH_STACK</h2>
+      <div class="row text-center g-4 mt-4">
+        
+        <div class="col-md-4">
+          <div class="glass-card">
+            <i class="bi bi-braces skill-icon"></i>
+            <h5 class="fw-bold text-white">HTML5 / CSS3 / JS</h5>
+            <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass-card">
+            <i class="bi bi-window-sidebar skill-icon"></i>
+            <h5 class="fw-bold text-white">React & TypeScript</h5>
+            <div class="progress"><div class="progress-bar" style="width: 75%"></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass-card">
+            <i class="bi bi-motherboard skill-icon"></i>
+            <h5 class="fw-bold text-white">F# & Functional Logic</h5>
+            <div class="progress"><div class="progress-bar" style="width: 70%"></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass-card">
+            <i class="bi bi-vector-pen skill-icon"></i>
+            <h5 class="fw-bold text-white">UI/UX (Figma)</h5>
+            <div class="progress"><div class="progress-bar" style="width: 85%"></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass-card">
+            <i class="bi bi-palette skill-icon"></i>
+            <h5 class="fw-bold text-white">Adobe Creative Suite</h5>
+            <div class="progress"><div class="progress-bar" style="width: 80%"></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass-card">
+            <i class="bi bi-terminal skill-icon"></i>
+            <h5 class="fw-bold text-white">Git & Version Control</h5>
+            <div class="progress"><div class="progress-bar" style="width: 80%"></div></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="py-5 bg-light" data-aos="fade-up">
-    <div class="container">
-      <h2 class="section-title">Education & Training</h2>
-      <ul>
-    <li>•	Diploma in Programming Languages </li> 
-    <li> •	Diploma in Programming Fundamentals </li> 
-    <li> •	Professional Graphic Design Course </li> 
-    <li> •	UX/UI Interface Design Fundamentals Course</li> 
-    <li> •	Frontend Design and Development Course</li> 
-    <li> •	Frontend Developer Course</li> 
-    <li> •	Programming Languages Course</li> 
-    <li> •	Professional Web Development Fundamentals Course</li> 
-    <li> •	Artificial Intelligence for Business Certificate</li> 
-    <li> •	AI Software Engineer Certificate</li> 
-
-      </ul>
-    </div>
-  </section>
-
+  <!-- Experience & Education Section -->
   <section class="py-5" data-aos="fade-up">
-    <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <p class="text-center">Email: sebastianvargastole@gmail.com | Phone: +57 321 404 1791</p>
+    <div class="container my-5">
+      <div class="row g-5">
+        
+        <!-- Experience -->
+        <div class="col-lg-6">
+          <h2 class="section-title"><span></span> MY EXPERIENCE</h2>
+          <div class="glass-card">
+            <h3 class="fw-bold" style="color: var(--cyan); text-shadow: 0 0 10px var(--cyan);">Logistics Assistant</h3>
+            <h5 class="text-warning mb-4">Indumentalicas SALGADO & SALGADO | 2023</h5>
+            <p class="fs-5" style="color: var(--text-light);">
+              Executed shipment coordination, handled complex inventory datasets, and optimized administrative workflows. Forged high-tier organizational and cross-functional team skills.
+            </p>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="col-lg-6">
+          <h2 class="section-title"><span></span> MY SKILLS</h2>
+          <ul class="edu-list list-unstyled fs-5">
+            <li>Artificial Intelligence for Business & AI Software Eng.</li>
+            <li>Frontend Developer & Web Development Fundamentals</li>
+            <li>UX/UI Interface Design Fundamentals</li>
+            <li>Professional Graphic Design Certification</li>
+            <li>Programming Languages Architecture</li>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Sebastián Vargas. All rights reserved.</p>
+  <!-- Contact Section -->
+  <section class="py-5 mb-5" data-aos="zoom-in" data-aos-duration="1000">
+    <div class="container my-5 text-center">
+      <h2 class="section-title"><span></span> MY CONTACT</h2>
+      <p class="fs-4 text-light mb-5 w-75 mx-auto">Systems are online. Ready to architect your next digital project or discuss career opportunities.</p>
+      
+      <div class="d-flex flex-column align-items-center gap-4">
+        <!-- El botón ya no forzará mayúsculas gracias a text-transform: none -->
+        <a href="mailto:sebastianvargastole@gmail.com" class="btn-cyber" style="text-transform: none;">
+          <i class="bi bi-envelope-fill me-2"></i> sebastianvargastole@gmail.com
+        </a>
+        <div class="mt-3">
+          <p class="fs-4 text-light fw-bold">
+            <i class="bi bi-telephone-fill me-2" style="color: var(--yellow); text-shadow: 0 0 10px var(--yellow);"></i> +57 321 404 1791
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="text-center">
+    <p class="m-0 text-muted fs-5 fw-bold letter-spacing-2">&copy; 2026 SEBASTIÁN VARGAS. <span style="color: var(--cyan);">SYSTEM ARCHITECT.</span></p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
-  </script>
-</body>
-</html>
-
-  <script>
-    AOS.init();
+    AOS.init({
+      once: true,
+      offset: 100,
+      duration: 800
+    });
   </script>
 </body>
 </html>
